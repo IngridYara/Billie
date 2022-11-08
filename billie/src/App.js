@@ -54,6 +54,12 @@ const initialFieldValues = {
   categoriaNovoGasto: '',
   dataNovoGasto: '',
   metaNovoGasto: '',
+
+  alimentacao: '',
+  transporte: '',
+
+  gastos: [],
+
 };
 
 const initialAction = {
@@ -92,7 +98,6 @@ function App (){
 
     if (action.type === ACTION_TYPES.DELETE){
 
-     
     }
 
   },[action]);

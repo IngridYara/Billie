@@ -36,7 +36,10 @@ router.post('/postMessages/', (req, res) => {
         valorNovoGasto: req.body.valorNovoGasto,
         categoriaNovoGasto: req.body.categoriaNovoGasto,
         dataNovoGasto: req.body.dataNovoGasto,
-        metaNovoGasto: req.body.metaNovoGasto
+        metaNovoGasto: req.body.metaNovoGasto,
+
+        alimentacao: req.body.alimentacao,
+        transporte: req.body.transporte
     })
 
     newRecord.save((err, doc) => {

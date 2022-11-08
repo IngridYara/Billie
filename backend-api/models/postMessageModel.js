@@ -29,7 +29,8 @@ var PostMessage = mongoose.model('PostMessage', {
     valorNovoGasto: { type: Number },
     categoriaNovoGasto: { type: String },
     dataNovoGasto: { type: String },
-    metaNovoGasto: { type: String}
+    metaNovoGasto: { type: String},
+
 })
 
 module.exports = {PostMessage}
