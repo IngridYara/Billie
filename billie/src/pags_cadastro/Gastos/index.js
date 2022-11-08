@@ -1,4 +1,5 @@
 import '@fontsource/roboto/300.css';
+import React, {useState} from 'react'
 import MyContext from '../../contexts/MyContext'
 import { Fragment, useContext } from 'react';
 import { Card, Container, FormGroup, Checkbox, FormControlLabel, FormLabel, Button, IconButton, Stack, Typography } from '@mui/material';
@@ -27,34 +28,75 @@ const theme = createTheme({
 
 });
 
-
-
 function Gastos() {
 
   const { posts, values, handleSubmit, handleInputChange, errors, validate, setAction, ACTION_TYPES } = useContext(MyContext)
 
-  let valueList = document.getElementById('valueList')
-  let listArray = [];
-  let text = '<span> you have selected : </span>';
+  const [alimentacao, setAlimentacao] = useState(true);
+  const [transporte, setTransporte] = useState(true);
+  const [moradia, setMoradia] = useState(true);
+  const [lazer, setLazer] = useState(true);
+  const [estudos, setEstudos] = useState(true);
+  const [prestacoes, setPrestacoes] = useState(true);
+  const [outros, setOutros] = useState(true);
 
-  let checkboxes =  document.querySelectorAll('.checkbox');
- 
-  for (let checkbox of checkboxes){
+  const handleChange=(data) => {
 
-    checkbox.addEventListener('click', function(){
-
-      if (this.checked === true){
-        listArray.push(this.value);
-        console.log(listArray)
-        valueList.innerHTML = text + listArray.join(' / ');
-      }else{ooooo
-
-        listArray = listArray.filter(e => e !== this.value);
-        valueList.innerHTML = text + listArray.join(' / ');
+    if (data == "alimentacao"){
+      if (alimentacao == true){
+        console.log(data)
+        
       }
-    })
-  }
+      setAlimentacao(!alimentacao);
+    
+    }
 
+    if (data == "transporte"){
+      if (transporte == true){
+        console.log(data)
+       
+      }
+      setTransporte(!transporte);
+    }
+
+    if (data == "moradia"){
+      if (moradia == true){
+        console.log(data)
+   
+      }
+      setMoradia(!moradia);
+    }
+
+    if (data == "lazer"){
+      if (lazer == true){
+        console.log(data)
+      }
+      setLazer(!lazer);
+    }
+
+    if (data == "estudos"){
+      if (estudos == true){
+        console.log(data)
+      }
+      setEstudos(!estudos);
+    }
+
+    if (data == "prestacoes"){
+      if (prestacoes == true){
+        console.log(data)
+      }
+      setPrestacoes(!prestacoes);
+    }
+
+    if (data == "outros"){
+      if (outros == true){
+        console.log(data)
+      }
+      setOutros(!outros);
+    }
+
+    return null
+  }
   return (
 
     <Container maxWidth="sm">
@@ -83,30 +125,70 @@ function Gastos() {
           <FormLabel component="legend" sx={{ color: "#1E7677", "font-weight": "bold", "font-family": "Arial", }}>
             <h3>Quais são os seus <br></br>tipos de gastos?</h3></FormLabel><br></br>
 
-          <FormGroup sx={{ color: "#1E7677", "font-weight": "bold", "font-family": "Arial" }}>
-
-            <input
+          <FormGroup sx={{ color: "#1E7677", "font-weight": "bold", "font-family": "Arial" }}>   
+            
+            <FormControlLabel 
               control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} 
-             
-              value="alimentacao"
-              
-              type = "checkbox"
-             
+              label="Alimentação"
+              type="checkbox"
+              name = "alimentacao"
+              value={values.alimentacao}  
+              onChange={() =>
+                
+                handleChange("alimentacao") == "alimentacao" ? null: null
+               
+              }
             />
 
             <FormControlLabel 
               control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} 
               label="Transporte"
-              value="transporte"
-              name = "Transporte"
-              onChange={handleInputChange}
+              type="checkbox"
+              value={transporte}  
+              onChange={() => handleChange("transporte")}
             />
-            <FormControlLabel control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} label="Moradia" />
-            <FormControlLabel control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} label="Lazer" />
-            <FormControlLabel control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} label="Estudos" />
-            <FormControlLabel control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} label="Prestações" />
-            <FormControlLabel control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} label="Outros" />
-          
+
+            <FormControlLabel 
+              control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} 
+              label="Moradia"
+              type="checkbox"
+              value={moradia}  
+              onChange={() => handleChange("moradia")}
+            />
+
+            <FormControlLabel 
+              control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} 
+              label="Lazer"
+              type="checkbox"
+              value={lazer}  
+              onChange={() => handleChange("lazer")}
+            />
+
+            <FormControlLabel 
+              control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} 
+              label="Estudos"
+              type="checkbox"
+              value={estudos}  
+              onChange={() => handleChange("estudos")}
+            />
+
+            <FormControlLabel 
+              control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} 
+              label="Prestações"
+              type="checkbox"
+              value={prestacoes}  
+              onChange={() => handleChange("prestacoes")}
+            />
+
+            <FormControlLabel 
+              control={<Checkbox sx={{ '&.Mui-checked': { color: orange[800], }, }} />} 
+              label="Outros"
+              type="checkbox"
+              value={outros}  
+              onChange={() => handleChange("outros")}
+             
+            />
+  
             <br></br>
             <Button variant="contained" type="submit" color="primary"
               sx={{ mt: 3, mb: 2 }}> Continuar</Button>
