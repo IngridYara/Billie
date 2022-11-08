@@ -47,7 +47,7 @@ function Gastos() {
         listArray.push(this.value);
         console.log(listArray)
         valueList.innerHTML = text + listArray.join(' / ');
-      }else{
+      }else{ooooo
 
         listArray = listArray.filter(e => e !== this.value);
         valueList.innerHTML = text + listArray.join(' / ');
