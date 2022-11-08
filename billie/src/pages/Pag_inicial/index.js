@@ -20,6 +20,9 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import GetAppIcon from '@mui/icons-material/GetApp';
+import InfoIcon from '@mui/icons-material/Info';
+import InsertCommentIcon from '@mui/icons-material/InsertComment';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -107,25 +110,73 @@ export function App() {
             color="inherit"
             sx={{ margin: 2 }} />
           {posts.map((post, type) => {
-            return (
-              <Typography variant="h5">{post.nome}</Typography>
-            );
+
+            if (post.nome != ''){
+              return (
+                <Typography variant="h5">{post.nome}</Typography>
+              );
+            }
           })}
         </Box>
       </List>
-      <Divider />
+    
       <List>
-        {['Editar Notificações', 'Editar Contas Bancárias', 'Baixar Dados', 'Tutorial', 'Feedback', 'Sobre'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <NotificationsIcon /> : <AccountBalanceWalletIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>))}
+        <IconButton  color="primary" aria-label="School" fontSize="large"
+          backgroundColor="skyblue" >
+          <NotificationsIcon />
+        </IconButton>
+
+        <Button sx={{ color: "black", "font-weight": "bold" }}>Editar Notificações</Button>
       </List>
-      <Divider />
+
+
+      <List>
+      <IconButton  color="primary" aria-label="School" fontSize="large"
+        backgroundColor="skyblue" >
+        <AccountBalanceWalletIcon />
+      </IconButton>
+
+      <Button sx={{ color: "black", "font-weight": "bold" }}>Editar Contas Bancárias</Button>
+    </List>
+
+
+    <List>
+    <IconButton  color="primary" aria-label="School" fontSize="large"
+      backgroundColor="skyblue" >
+      <GetAppIcon />
+    </IconButton>
+
+    <Button sx={{ color: "black", "font-weight": "bold" }}>Baixar Dados</Button>
+  </List>
+
+  <List>
+  <IconButton  color="primary" aria-label="School" fontSize="large"
+    backgroundColor="skyblue" >
+    <HelpIcon />
+  </IconButton>
+
+  <Button sx={{ color: "black", "font-weight": "bold" }}>Tutorial</Button>
+</List>
+
+<List>
+  <IconButton  color="primary" aria-label="School" fontSize="large"
+    backgroundColor="skyblue" >
+    <InsertCommentIcon />
+  </IconButton>
+
+  <Button sx={{ color: "black", "font-weight": "bold" }}>Feedback</Button>
+</List>
+
+<List>
+  <IconButton  color="primary" aria-label="School" fontSize="large"
+    backgroundColor="skyblue" >
+    <InfoIcon />
+  </IconButton>
+
+  <Button sx={{ color: "black", "font-weight": "bold" }}>Sobre</Button>
+</List>
+<Divider />
+
     </Box>
   );
 

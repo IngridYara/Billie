@@ -76,10 +76,10 @@ function Limite() {
                 </Stack>
                 </Typography>
                 <Item>
-                    <CardContent>
+                    <CardContent >
                     <br></br>
                     <IconButton color="primary" aria-label="Add" fontSize="large"
-                        backgroundColor="skyblue">
+                        backgroundColor="skyblue"  >
                         <AddIcon />
                     </IconButton>
                     </CardContent>
@@ -98,8 +98,48 @@ function Limite() {
 
             <BorderLinearProgress variant="determinate" value={60} />
         </Box>
+
         <br></br><br></br><br></br>
         </Card>
+
+        <Typography>
+                <h3>PASSEIOS - R$ 150,00</h3>
+              </Typography>
+
+        <Card>
+            <br></br><br></br>
+            <Box sx={{ flexGrow: 1 }}>
+
+            <BorderLinearProgress variant="determinate" value={80} />
+            <Typography sx={{ color: "#FF9800" }}>
+             <center> <h2>R$ 80,00</h2></center>
+            </Typography>
+        </Box>
+
+        <br></br>
+        </Card>
+
+
+
+        <Typography>
+                <h3>TRANSPORTE - R$ 250,00</h3>
+              </Typography>
+
+        <Card>
+            <br></br><br></br>
+            <Box sx={{ flexGrow: 1 }}>
+
+            <BorderLinearProgress variant="determinate" value={100} />
+            <Typography sx={{ color: "#00C8C0" }}>
+             <center> <h2>R$ 80,00</h2></center>
+            </Typography>
+
+        </Box>
+
+
+        {/* <br></br><br></br><br></br> */}
+        </Card>
+
         </Container>
         </div>
     );
