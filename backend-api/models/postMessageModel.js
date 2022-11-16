@@ -9,28 +9,26 @@ var PostMessage = mongoose.model('PostMessage', {
     email : {type: String},
     senha: {type: String},
 
-    meta1: {type: String},
-    meta2: {type: String},
-    meta3: {type: String},
-    valor1: {type: Number },
-    valor2: {type: Number },
-    valor3: {type: Number },
+    transacoes: [
+        {
+            id:{type: mongoose.ObjectId},
+            data: {type: Date, default: Date.now},
+            titulo: {type: String},
+            valor: {type: Number },
+            categoria: {type: String},
+            meta: {type: String},
+            tipo: {type: String},
+        }
+    ],
 
-    metaNova: {type: String},
-    valorNovo: {type: Number },
-
-    nomeNovoGanho: { type: String },
-    valorNovoGanho: { type: Number },
-    categoriaNovoGanho: { type: String },
-    dataNovoGanho: { type: String },
-    metaNovoGanho: { type: String },
-
-    nomeNovoGasto: { type: String },
-    valorNovoGasto: { type: Number },
-    categoriaNovoGasto: { type: String },
-    dataNovoGasto: { type: String },
-    metaNovoGasto: { type: String},
-
+    metas: [
+        {
+            id:{type: mongoose.ObjectId},
+            descricao: {type: String},
+            valor_alvo: {type: Number },
+            valor_atual: {type: Number },
+        }
+    ]
 })
 
 module.exports = {PostMessage}

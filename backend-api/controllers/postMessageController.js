@@ -6,7 +6,7 @@ var ObjectID = require('mongoose').Types.ObjectId
 var {PostMessage} = require('../models/postMessageModel')
 
 //save record
-router.post('/postMessages/', (req, res) => {
+router.post('/postmessages/', (req, res) => {
     
     var newRecord = new PostMessage({
 
@@ -16,30 +16,28 @@ router.post('/postMessages/', (req, res) => {
         email: req.body.email,
         senha: req.body.senha,
 
-        meta1: req.body.meta1,
-        meta2: req.body.meta2,
-        meta3: req.body.meta3,
-        valor1: req.body.valor1,
-        valor2: req.body.valor2,
-        valor3: req.body.valor3,
+        transacoes: [
+            {
+                id: req.params.id,
+                data: req.body.data,
+                titulo: req.body.titulo,
+                valor: req.body.valor,
+                categoria: req.body.categoria,
+                meta: req.body.meta,
+                tipo: req.body.tipo,
 
-        metaNova: req.body.metaNova,
-        valorNovo: req.body.valorNovo,
+            }
+        ],
 
-        nomeNovoGanho: req.body.nomeNovoGanho,
-        valorNovoGanho: req.body.valorNovoGanho,
-        categoriaNovoGanho: req.body.categoriaNovoGanho,
-        dataNovoGanho: req.body.dataNovoGanho,
-        metaNovoGanho: req.body.metaNovoGanho,
-
-        nomeNovoGasto: req.body.nomeNovoGasto,
-        valorNovoGasto: req.body.valorNovoGasto,
-        categoriaNovoGasto: req.body.categoriaNovoGasto,
-        dataNovoGasto: req.body.dataNovoGasto,
-        metaNovoGasto: req.body.metaNovoGasto,
-
-        alimentacao: req.body.alimentacao,
-        transporte: req.body.transporte
+        metas: [
+            {
+                id: req.params.id,
+                descricao: req.body.descricao,
+                valor_alvo: req.body.valor_alvo,
+                valor_atual: req.body.valor_atual,
+            }
+        ]
+      
     })
 
     newRecord.save((err, doc) => {
@@ -51,7 +49,8 @@ router.post('/postMessages/', (req, res) => {
 })
 
 //get all records
-router.get('/postMessages/', (req, res) => {
+router.get('/postmessages/', (req, res) => {
+
     PostMessage.find((err,docs) =>{
         if(!err) 
             res.send(docs)
@@ -61,47 +60,52 @@ router.get('/postMessages/', (req, res) => {
 })
 
 //update record
-router.put('/postMessages/:id', (req, res) => {
+router.put('/postmessages/:id', (req, res) => {
     
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('No record with given id: ' + req.params.id)
-
+       
     var updatedRecord = {
 
-        meta1: req.body.meta1 != '' ?  req.body.meta1 : res.meta1,
-        meta2: req.body.meta2 != '' ?  req.body.meta2 : res.meta2,
-        meta3: req.body.meta3 != '' ?  req.body.meta3 : res.meta3,
-        valor1: req.body.valor1 != '' ?  req.body.valor1 : res.valor1,
-        valor2: req.body.valor2 != '' ?  req.body.valor2 : res.valor2,
-        valor3: req.body.valor3 != '' ?  req.body.valor3 : res.valor3,
+        metas: {
 
-        metaNova: req.body.metaNova != '' ?  req.body.metaNova : res.metaNova,
-        valorNovo: req.body.valorNovo != '' ?  req.body.valorNovo : res.valorNovo,
+            descricao:  req.body.descricao != '' ?  req.body.descricao : res.descricao,
+            valor_alvo: req.body.valor_alvo != '' ?  req.body.valor_alvo : res.valor_alvo,
+        }
+    }    
+    
+    PostMessage.updateOne( { _id: req.params.id }, {$push: updatedRecord}, (err, docs) => {
+        if(!err) res.send(docs)
+        else console.log('Error while updating a record: ' + JSON.stringify(err,undefined,2))
+    })
+})
 
-        nomeNovoGanho: req.body.nomeNovoGanho != '' ?  req.body.nomeNovoGanho : res.nomeNovoGanho,
-        valorNovoGanho: req.body.valorNovoGanho != '' ?  req.body.valorNovoGanho : res.valorNovoGanho,
-        categoriaNovoGanho: req.body.categoriaNovoGanho != '' ?  req.body.categoriaNovoGanho : res.categoriaNovoGanho,
-        dataNovoGanho: req.body.dataNovoGanho != '' ?  req.body.dataNovoGanho : res.dataNovoGanho,
-        metaNovoGanho: req.body.metaNovoGanho != '' ?  req.body.metaNovoGanho : res.metaNovoGanho,
+router.put('/postmessages/:id/inserir_transacoes', (req, res) => {
+    
+    if(!ObjectID.isValid(req.params.id))
+        return res.status(400).send('No record with given id: ' + req.params.id)
+       
+    var updatedRecord = {
 
-        nomeNovoGasto: req.body.nomeNovoGasto != '' ?  req.body.nomeNovoGasto : res.nomeNovoGasto,
-        valorNovoGasto: req.body.valorNovoGasto != '' ?  req.body.valorNovoGasto : res.valorNovoGasto,
-        categoriaNovoGasto: req.body.categoriaNovoGasto != '' ?  req.body.categoriaNovoGasto : res.categoriaNovoGasto,
-        dataNovoGasto: req.body.dataNovoGasto != '' ?  req.body.dataNovoGasto : res.dataNovoGasto,
-        metaNovoGasto: req.body.metaNovoGasto != '' ?  req.body.metaNovoGasto : res.metaNovoGasto,
+        transacoes: {
 
-    }
-
-    PostMessage.findByIdAndUpdate(req.params.id, {$set: updatedRecord}, {new:true}, (err, docs) => {
-        if(!err) 
-            res.send(docs)
-        else 
-            console.log('Error while updating a record: ' + JSON.stringify(err,undefined,2))
+            data: req.body.data != '' ?  req.body.data : res.data,
+            titulo: req.body.titulo != '' ?  req.body.titulo : res.titulo,
+            valor: req.body.valor != '' ?  req.body.valor : res.valor,
+            categoria: req.body.categoria != '' ?  req.body.categoria : res.categoria,
+            meta: req.body.meta != '' ?  req.body.meta : res.meta,
+            tipo: req.body.tipo != '' ?  req.body.tipo : res.tipo,
+        },
+    }    
+    
+    PostMessage.updateOne( { _id: req.params.id }, {$push: updatedRecord}, (err, docs) => {
+        if(!err) res.send(docs)
+        else console.log('Error while updating a record: ' + JSON.stringify(err,undefined,2))
     })
 })
 
 //delete object
-router.delete('/postMessages/:id', (req, res) => {
+router.delete('/postmessage/:id', (req, res) => {
     if(!ObjectID.isValid(req.params.id))
         return res.status(400).send('No record with given id: ' + req.params.id)
 

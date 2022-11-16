@@ -44,7 +44,9 @@ const theme = createTheme({
 
 const Login = (props) =>{
 
-  const {posts, values, handleSubmit,  handleInputChange, errors, validate, setAction, ACTION_TYPES} = useContext(MyContext)
+  const {idUsuario, posts, values, handleSubmit,  handleInputChange, errors, validate, setAction, ACTION_TYPES} = useContext(MyContext)
+  
+  const aux =  {...(errors.valida ? { error: true, helperText:errors.valida} : null)}
 
   return (
 
@@ -61,31 +63,31 @@ const Login = (props) =>{
             <br></br>
                 <TextField 
                     margin="normal"
-                    name = "email"
+                    name = "email_entrada"
                     variant="outlined"
                     label="email" 
                     required
                     fullWidth
                     autoComplete="email" 
                     autoFocus
-                    value={values.email}
+                    value={values.email_entrada}
                     onChange={handleInputChange}
-                    {...(errors.email ? { error: true, helperText:errors.email} : null)}/>
+                    {...(errors.email_entrada ? { error: true, helperText:errors.email_entrada} : null)}/>
+                   
 
                 <TextField 
                     margin="normal" 
                     type="password"
                     required 
-                    name = "senha"
+                    name = "senha_entrada"
                     variant="outlined"
                     label="senha" 
                     fullWidth
                     autoComplete="current-password"
-                    value={values.senha}
+                    value={values.senha_entrada}
                     onChange={handleInputChange}
-                    {...(errors.senha ? { error: true, helperText:errors.senha} : null)}/>
+                    {...(errors.senha_entrada ? { error: true, helperText:errors.senha_entrada} : null)}/>
 
-           
                   <FormControlLabel control={<Checkbox value="remember" color="secondary" />}
                     label="Me mantenha logado"/>
 

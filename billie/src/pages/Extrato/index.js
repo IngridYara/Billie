@@ -259,6 +259,10 @@ function Extrato() {
         </Box >
     );
 
+    let matriz_trasicoes = []
+
+    let Data = 0
+
     return (
 
         <Container maxWidth="sm">
@@ -283,225 +287,241 @@ function Extrato() {
 
                     {posts.map((post, index) => {
 
-                        if (post.dataNovoGanho != '') {
+                        for (let i = 0; i < post.transacoes.length; i++) {
+                            matriz_trasicoes[i] = post.transacoes[i]
+                        }
 
-                            if (post.dataNovoGanho === aux) {
-                                aux = post.dataNovoGanho
-                                return (
+                    })}
 
-                                    <Fragment key={index}>
-                                        <br></br><br></br>  <br></br>
+                    {matriz_trasicoes.map((post, index) => {
+                      
+                        Data = new Date(post.data)
 
-                                        {['GANHOS'].map((anchor) => (
-                                            <React.Fragment key={anchor}>
+                        if (post.tipo.toUpperCase() === "GANHO" || post.tipo.toUpperCase() === "GANHOS") {
+                            if (post.data != '') {
 
-                                                <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
-                                                    <CardContent>
-                                                        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
+                                if (post.data === aux) {
+                                    aux = post.data
 
-                                                            <center>
-                                                                <Typography sx={{ color: "black" }}>
-                                                                    GANHO REGISTRADO
-                                                                </Typography>
+                                    return (
 
-                                                                <Typography sx={{ color: "#00C8C0" }}>
-                                                                    <h5>+ {post.valorNovoGanho}</h5>
-                                                                </Typography>
+                                        <Fragment key={index}>
+                                            <br></br><br></br>  <br></br>
 
-                                                                <Typography sx={{ color: "#076D6D" }}>
-                                                                    <h5>{post.nomeNovoGanho}</h5>
-                                                                </Typography>
-                                                            </center>
+                                            {['GANHOS'].map((anchor) => (
+                                                <React.Fragment key={anchor}>
 
-                                                            <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
-                                                                backgroundColor="skyblue">
-                                                                <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#00C8C0" }} />
-                                                            </IconButton>
-                                                        </Stack>
-                                                    </CardContent>
-                                                </Card>
+                                                    <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
+                                                        <CardContent>
+                                                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
 
-                                                <SwipeableDrawer
-                                                    anchor="bottom"
-                                                    open={state[anchor]}
+                                                                <center>
+                                                                    <Typography sx={{ color: "black" }}>
+                                                                        GANHO REGISTRADO
+                                                                    </Typography>
 
-                                                    onOpen={toggleDrawer(anchor, true)}>
-                                                    {list(anchor)}
-                                                </SwipeableDrawer>
+                                                                    <Typography sx={{ color: "#00C8C0" }}>
+                                                                        <h5>+ {post.valor}</h5>
+                                                                    </Typography>
 
-                                            </React.Fragment>
-                                        ))}
+                                                                    <Typography sx={{ color: "#076D6D" }}>
+                                                                        <h5>{post.titulo}</h5>
+                                                                    </Typography>
+                                                                </center>
+
+                                                                <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
+                                                                    backgroundColor="skyblue">
+                                                                    <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#00C8C0" }} />
+                                                                </IconButton>
+                                                            </Stack>
+                                                        </CardContent>
+                                                    </Card>
+
+                                                    <SwipeableDrawer
+                                                        anchor="bottom"
+                                                        open={state[anchor]}
+
+                                                        onOpen={toggleDrawer(anchor, true)}>
+                                                        {list(anchor)}
+                                                    </SwipeableDrawer>
+
+                                                </React.Fragment>
+                                            ))}
 
 
-                                    </Fragment>
+                                        </Fragment>
 
-                                );
+                                    );
+                                }
+
+                                if (post.data !== aux) {
+                                    aux = post.data
+
+                                    return (
+
+                                        <Fragment key={index}>
+                                            <br></br>
+                                            <Typography><h4>{post.data}  SALDO: 15,00</h4></Typography>
+                                            <Divider />
+                                            <br></br>  <br></br>
+                                            {['GANHOS'].map((anchor) => (
+                                                <React.Fragment key={anchor}>
+
+                                                    <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
+                                                        <CardContent>
+                                                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
+
+                                                                <center>
+                                                                    <Typography sx={{ color: "black" }}>
+                                                                        GANHO REGISTRADO
+                                                                    </Typography>
+
+                                                                    <Typography sx={{ color: "#00C8C0" }}>
+                                                                        <h5>+ {post.valor}</h5>
+                                                                    </Typography>
+
+                                                                    <Typography sx={{ color: "#076D6D" }}>
+                                                                        <h5>{post.titulo}</h5>
+                                                                    </Typography>
+                                                                </center>
+
+                                                                <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
+                                                                    backgroundColor="skyblue">
+                                                                    <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#00C8C0" }} />
+                                                                </IconButton>
+                                                            </Stack>
+                                                        </CardContent>
+                                                    </Card>
+
+                                                    <SwipeableDrawer
+                                                        anchor="bottom"
+                                                        open={state[anchor]}
+
+                                                        onOpen={toggleDrawer(anchor, true)}>
+                                                        {list(anchor)}
+                                                    </SwipeableDrawer>
+
+                                                </React.Fragment>
+                                            ))}
+                                        </Fragment>
+                                    );
+                                }
+
+                                aux = post.data
                             }
-
-                            if (post.dataNovoGanho !== aux) {
-                                aux = post.dataNovoGanho
-
-                                return (
-
-                                    <Fragment key={index}>
-                                        <br></br>
-                                        <Typography><h4>{post.dataNovoGanho}  SALDO: 15,00</h4></Typography>
-                                        <Divider />
-                                        <br></br>  <br></br>
-                                        {['GANHOS'].map((anchor) => (
-                                            <React.Fragment key={anchor}>
-
-                                                <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
-                                                    <CardContent>
-                                                        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
-
-                                                            <center>
-                                                                <Typography sx={{ color: "black" }}>
-                                                                    GANHO REGISTRADO
-                                                                </Typography>
-
-                                                                <Typography sx={{ color: "#00C8C0" }}>
-                                                                    <h5>+ {post.valorNovoGanho}</h5>
-                                                                </Typography>
-
-                                                                <Typography sx={{ color: "#076D6D" }}>
-                                                                    <h5>{post.nomeNovoGanho}</h5>
-                                                                </Typography>
-                                                            </center>
-
-                                                            <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
-                                                                backgroundColor="skyblue">
-                                                                <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#00C8C0" }} />
-                                                            </IconButton>
-                                                        </Stack>
-                                                    </CardContent>
-                                                </Card>
-
-                                                <SwipeableDrawer
-                                                    anchor="bottom"
-                                                    open={state[anchor]}
-
-                                                    onOpen={toggleDrawer(anchor, true)}>
-                                                    {list(anchor)}
-                                                </SwipeableDrawer>
-
-                                            </React.Fragment>
-                                        ))}
-                                    </Fragment>
-                                );
-                            }
-
-                            aux = post.dataNovoGanho
                         }
                     })}
 
                     <br></br>
 
-                    {posts.map((post, index) => {
+                    {matriz_trasicoes.map((post, index) => {
 
-                        if (post.dataNovoGasto != '') {
+                        if (post.tipo.toUpperCase() === "GASTO" || post.tipo.toUpperCase() === "GASTOS") {
+                            if (post.data != '') {
 
-                            if (post.dataNovoGasto === aux2) {
-                                aux2 = post.dataNovoGasto
-                                return (
+                                if (post.data === aux2) {
+                                    aux2 = post.data
 
-                                    <Fragment key={index}>
-                                        <br></br><br></br>  <br></br>
+                                    return (
 
-                                        {['GASTOS'].map((anchor) => (
-                                            <React.Fragment key={anchor}>
+                                        <Fragment key={index}>
+                                            <br></br><br></br>  <br></br>
 
-                                                <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
-                                                    <CardContent>
-                                                        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
+                                            {['GASTOS'].map((anchor) => (
+                                                <React.Fragment key={anchor}>
 
-                                                            <center>
-                                                                <Typography sx={{ color: "black" }}>
-                                                                    GASTO REGISTRADO
-                                                                </Typography>
+                                                    <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
+                                                        <CardContent>
+                                                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
 
-                                                                <Typography sx={{ color: "#FF9800" }}>
-                                                                    <h5>- {post.valorNovoGasto}</h5>
-                                                                </Typography>
+                                                                <center>
+                                                                    <Typography sx={{ color: "black" }}>
+                                                                        GASTO REGISTRADO
+                                                                    </Typography>
 
-                                                                <Typography sx={{ color: "#076D6D" }}>
-                                                                    <h5>{post.nomeNovoGasto}</h5>
-                                                                </Typography>
-                                                            </center>
+                                                                    <Typography sx={{ color: "#FF9800" }}>
+                                                                        <h5>- {post.valor}</h5>
+                                                                    </Typography>
 
-                                                            <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
-                                                                backgroundColor="skyblue">
-                                                                <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#FF9800" }} />
-                                                            </IconButton>
-                                                        </Stack>
-                                                    </CardContent>
-                                                </Card>
+                                                                    <Typography sx={{ color: "#076D6D" }}>
+                                                                        <h5>{post.titulo}</h5>
+                                                                    </Typography>
+                                                                </center>
 
-                                                <SwipeableDrawer
-                                                    anchor="bottom"
-                                                    open={state[anchor]}
+                                                                <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
+                                                                    backgroundColor="skyblue">
+                                                                    <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#FF9800" }} />
+                                                                </IconButton>
+                                                            </Stack>
+                                                        </CardContent>
+                                                    </Card>
 
-                                                    onOpen={toggleDrawer(anchor, true)}>
-                                                    {list2(anchor)}
-                                                </SwipeableDrawer>
+                                                    <SwipeableDrawer
+                                                        anchor="bottom"
+                                                        open={state[anchor]}
 
-                                            </React.Fragment>
-                                        ))}
-                                    </Fragment>
-                                );
-                            }
+                                                        onOpen={toggleDrawer(anchor, true)}>
+                                                        {list2(anchor)}
+                                                    </SwipeableDrawer>
 
-                            if (post.dataNovoGasto !== aux2) {
-                                aux = post.dataNovoGasto
+                                                </React.Fragment>
+                                            ))}
+                                        </Fragment>
+                                    );
+                                }
 
-                                return (
+                                if (post.data !== aux2) {
+                                    aux = post.data
 
-                                    <Fragment key={index}>
-                                        <br></br>
-                                        <Typography><h4>{post.dataNovoGasto}  SALDO: 15,00</h4></Typography>
-                                        <Divider />
-                                        <br></br>  <br></br>
-                                        {['GASTOS'].map((anchor) => (
-                                            <React.Fragment key={anchor}>
+                                    return (
 
-                                                <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
-                                                    <CardContent>
-                                                        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
+                                        <Fragment key={index}>
+                                            <br></br>
+                                            <Typography><h4>{post.data}  SALDO: 15,00</h4></Typography>
+                                            <Divider />
+                                            <br></br>  <br></br>
+                                            {['GASTOS'].map((anchor) => (
+                                                <React.Fragment key={anchor}>
 
-                                                            <center>
-                                                                <Typography sx={{ color: "black" }}>
-                                                                    GASTO REGISTRADO
-                                                                </Typography>
+                                                    <Card onClick={toggleDrawer(anchor, true)} sx={{ maxWidth: 500, height: 150, marginRight: 1, }} style={{ flex: 1 }}>
+                                                        <CardContent>
+                                                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 2, md: 4 }}>
 
-                                                                <Typography sx={{ color: "#FF9800" }}>
-                                                                    <h5>- {post.valorNovoGasto}</h5>
-                                                                </Typography>
+                                                                <center>
+                                                                    <Typography sx={{ color: "black" }}>
+                                                                        GASTO REGISTRADO
+                                                                    </Typography>
 
-                                                                <Typography sx={{ color: "#076D6D" }}>
-                                                                    <h5>{post.nomeNovoGasto}</h5>
-                                                                </Typography>
-                                                            </center>
+                                                                    <Typography sx={{ color: "#FF9800" }}>
+                                                                        <h5>- {post.valor}</h5>
+                                                                    </Typography>
 
-                                                            <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
-                                                                backgroundColor="skyblue">
-                                                                <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#FF9800" }} />
-                                                            </IconButton>
-                                                        </Stack>
-                                                    </CardContent>
-                                                </Card>
+                                                                    <Typography sx={{ color: "#076D6D" }}>
+                                                                        <h5>{post.titulo}</h5>
+                                                                    </Typography>
+                                                                </center>
 
-                                                <SwipeableDrawer
-                                                    anchor="bottom"
-                                                    open={state[anchor]}
+                                                                <IconButton color="primary" aria-label="ArrowForwardIos" fontSize="large"
+                                                                    backgroundColor="skyblue">
+                                                                    <ArrowForwardIosIcon sx={{ fontSize: 60, color: "#FF9800" }} />
+                                                                </IconButton>
+                                                            </Stack>
+                                                        </CardContent>
+                                                    </Card>
 
-                                                    onOpen={toggleDrawer(anchor, true)}>
-                                                    {list2(anchor)}
-                                                </SwipeableDrawer>
+                                                    <SwipeableDrawer
+                                                        anchor="bottom"
+                                                        open={state[anchor]}
 
-                                            </React.Fragment>
-                                        ))}
-                                    </Fragment>
-                                );
+                                                        onOpen={toggleDrawer(anchor, true)}>
+                                                        {list2(anchor)}
+                                                    </SwipeableDrawer>
+
+                                                </React.Fragment>
+                                            ))}
+                                        </Fragment>
+                                    );
+                                }
                             }
                         }
                     })}

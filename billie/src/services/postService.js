@@ -16,7 +16,12 @@ export async function createPost(newRecord){
 
 export async function updatePost(id, updateRecord){
 
-    return axios.put(url + id, updateRecord)
+    return axios.put(url + id  , updateRecord)
+}
+
+export async function updateTransacoes(id, updateRecord){
+
+    return axios.put(url + id + "/inserir_transacoes", updateRecord)
 }
 
 export async function removePost(id){

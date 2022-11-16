@@ -63,10 +63,10 @@ const Metas = (props) => {
                   margin="normal" 
                   id="outlined-name" 
                   fullWidth 
-                  name = "meta1"
-                  value={values.meta1}
+                  name = "descricao"
+                  value={values.descricao}
                   onChange={handleInputChange}
-                  {...(errors.meta1? { error: true, helperText:errors.meta1} : null)}
+                  {...(errors.descricao? { error: true, helperText:errors.descricao} : null)}
                                 
                 label="Primeira Meta"  />
 
@@ -74,64 +74,23 @@ const Metas = (props) => {
                   id="outlined-adornment-amount" 
                   fullWidth 
                   label="Valor em R$" 
-                  name = "valor1"
-                  value={values.valor1}
+                  name = "valor_alvo"
+                  value={values.valor_alvo}
                   onChange={handleInputChange}
-                  {...(errors.valor1? { error: true, helperText:errors.valor1} : null)}/>
+                  {...(errors.valor_alvo? { error: true, helperText:errors.valor_alvo} : null)}/>
 
                 <br></br>
 
-                <TextField 
-                  margin="normal" 
-                  id="outlined-name"  
-                  fullWidth 
-                  name = "meta2"
-                  value={values.meta2}
-                  onChange={handleInputChange}
-                  {...(errors.meta2? { error: true, helperText:errors.meta2} : null)}
-                          
-                label="Segunda Meta"  />
+                {posts.map((post, index) => {
 
-                <TextField 
-                  id="outlined-adornment-amount" 
-                  fullWidth 
-                  label="Valor em R$" 
-                  name = "valor2"
-                  value={values.valor2}
-                  onChange={handleInputChange}
-                  {...(errors.valor2? { error: true, helperText:errors.valor2} : null)}/>
-
-                <br></br>
-
-                <TextField 
-                  margin="normal" 
-                  id="outlined-name" 
-                  name = "meta3"
-                  value={values.meta3}
-                  onChange={handleInputChange}
-                  {...(errors.meta3? { error: true, helperText:errors.meta3} : null)}
-            
-                fullWidth label="Terceira Meta"  />
-
-                <TextField 
-                  id="outlined-adornment-amount" 
-                  fullWidth 
-                  label="Valor em R$" 
-                  name = "valor3"
-                  value={values.valor3}
-                  onChange={handleInputChange}
-                  {...(errors.valor3? { error: true, helperText:errors.valor3} : null)}   
-                  inputmode="decimal" />
-
-                  {posts.map((post, index) => {
-
-                      return (
-                        <Fragment key={index}>
-                          <Button variant="contained" type="submit" color="primary"
-                          onClick = {() => {setAction({currentId: post._id, type: ACTION_TYPES.UPDATE})}}
-                          sx={{ mt: 3, mb: 2 }} > Continuar</Button>
-                        </Fragment>
-                      );})}
+                  return (
+                    <Fragment key={index}>
+                      <Button variant="contained" type="submit" color="primary" sx={{ mt: 3, mb: 2 }}
+                        onClick={() => { { setAction({ currentId: post._id, type: ACTION_TYPES.UPDATE }) } }}>Continuar</Button>
+                    </Fragment>
+    
+                  );
+                })}
           
               </form>
 
