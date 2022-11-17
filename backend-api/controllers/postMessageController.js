@@ -14,29 +14,7 @@ router.post('/postmessages/', (req, res) => {
         sobrenome: req.body.sobrenome,
         telefone: req.body.telefone,
         email: req.body.email,
-        senha: req.body.senha,
-
-        transacoes: [
-            {
-                id: req.params.id,
-                data: req.body.data,
-                titulo: req.body.titulo,
-                valor: req.body.valor,
-                categoria: req.body.categoria,
-                meta: req.body.meta,
-                tipo: req.body.tipo,
-
-            }
-        ],
-
-        metas: [
-            {
-                id: req.params.id,
-                descricao: req.body.descricao,
-                valor_alvo: req.body.valor_alvo,
-                valor_atual: req.body.valor_atual,
-            }
-        ]
+        senha: req.body.senha,      
       
     })
 

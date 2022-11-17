@@ -97,11 +97,9 @@ const theme = createTheme({
                                 label="Senha" type="password" />
                                 
                                 <br></br> 
-                                
-                                <Link to="/pag_informativa" style={{"text-decoration":"none"}}>
+                                           
                                 <Button variant="contained" type="submit" color="primary"
                                 sx={{ mt: 3, mb: 2 }} > Continuar</Button>
-                                </Link>
 
                             </Stack>
                         </form>                   

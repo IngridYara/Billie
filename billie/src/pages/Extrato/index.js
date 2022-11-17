@@ -79,7 +79,7 @@ function Extrato() {
                         <br></br>
 
                         <Typography>
-                            <h3 sx={{ color: "#1E7677", "font-weight": "bold", "font-family": "Arial" }}>Editar Ganho</h3><br></br>
+                            <h3 sx={{ color: "#1E7677", "font-weight": "bold", "font-family": "Arial" }}>Editar Transação</h3><br></br>
                         </Typography>
 
                         <TextField
@@ -88,46 +88,59 @@ function Extrato() {
                             id="outlined-name"
                             label="Título"
                             sx={{ width: 325, margin: 1 }}
-                            name="nomeNovoGanho"
-                            value={values.nomeNovoGanho}
+                            name="titulo"
+                            value={values.titulo}
                             onChange={handleInputChange}
-                            {...(errors.nomeNovoGanho ? { error: true, helperText: errors.nomeNovoGanho } : null)} />
+                            {...(errors.titulo ? { error: true, helperText: errors.titulo } : null)} />
 
                         <TextField
                             id="outlined-adornment-amount"
                             sx={{ width: 325, margin: 1 }}
                             label="Valor em R$"
-                            name="valorNovoGanho"
-                            value={values.valorNovoGanho}
+                            name="valor"
+                            value={values.valor}
                             onChange={handleInputChange}
-                            {...(errors.valorNovoGanho ? { error: true, helperText: errors.valorNovoGanho } : null)} />
+                            {...(errors.valor ? { error: true, helperText: errors.valor } : null)} />
 
                         <TextField
                             id="outlined-adornment-amount"
                             sx={{ width: 325, margin: 1 }}
                             label="Categoria"
-                            name="categoriaNovoGanho"
-                            value={values.categoriaNovoGanho}
+                            name="categoria"
+                            value={values.categoria}
                             onChange={handleInputChange}
-                            {...(errors.categoriaNovoGanho ? { error: true, helperText: errors.categoriaNovoGanho } : null)} />
+                            {...(errors.categoria ? { error: true, helperText: errors.categoria } : null)} />
 
                         <TextField
                             id="outlined-adornment-amount"
                             sx={{ width: 325, margin: 1 }}
                             label="Data"
-                            name="dataNovoGanho"
-                            value={values.dataNovoGanho}
+                            name="data"
+                            value={values.data}
                             onChange={handleInputChange}
-                            {...(errors.dataNovoGanho ? { error: true, helperText: errors.dataNovoGanho } : null)} />
+                            {...(errors.data ? { error: true, helperText: errors.data } : null)} />
 
                         <TextField
                             id="outlined-adornment-amount"
                             sx={{ width: 325, margin: 1 }}
                             label="Meta relacionada"
-                            name="metaNovoGanho"
-                            value={values.metaNovoGanho}
+                            name="meta"
+                            value={values.meta}
                             onChange={handleInputChange}
-                            {...(errors.metaNovoGanho ? { error: true, helperText: errors.metaNovoGanho } : null)} />
+                            {...(errors.meta ? { error: true, helperText: errors.meta } : null)} />
+
+                        <TextField
+                            id="outlined-adornment-amount"
+                            sx={{
+                              width: 325,
+                              margin: 1
+                            }}
+                            label="Tipo relacionado"
+                            name="tipo"
+                            value={values.tipo}
+                            onChange={handleInputChange}
+                            {...(errors.tipo ? { error: true, helperText: errors.tipo } : null)} />
+              
 
                         <br></br> <br></br>
 
@@ -147,118 +160,7 @@ function Extrato() {
             </Stack>
         </Box >
     );
-
-    const list2 = (anchor) => (
-
-        <Box role="presentation"
-            sx={{
-                display: 'table-row-group',
-                justifyContent: 'center',
-                borderTopLeftRadius: 8,
-                borderTopRightRadius: 8,
-                visibility: 'visible',
-                right: 0,
-                left: 0,
-            }}>
-
-            <Puller onClick={toggleDrawer(anchor, false)} />
-
-            <IconButton onClick={toggleDrawer(anchor, false)}>
-                <CloseIcon />
-            </IconButton>
-
-            <Stack direction='row' spacing={4} justifyContent="center" alignItems="center">
-
-                <center>
-
-                    <form noValidate component="legend" sx={{ mt: 1 }} onSubmit={handleSubmit}>
-
-                        <br></br>
-
-                        <Typography>
-                            <h3 sx={{ color: "#1E7677", "font-weight": "bold", "font-family": "Arial" }}>Cadastrar Gasto</h3><br></br>
-                        </Typography>
-
-                        <TextField
-                            margin="normal"
-                            id="outlined-name"
-                            label="Título"
-                            sx={{
-                                width: 325,
-                                margin: 1
-                            }}
-                            name="nomeNovoGasto"
-                            value={values.nomeNovoGasto}
-                            onChange={handleInputChange}
-                            {...(errors.nomeNovoGasto ? { error: true, helperText: errors.nomeNovoGasto } : null)} />
-
-                        <TextField
-                            id="outlined-adornment-amount"
-                            sx={{
-                                width: 325,
-                                margin: 1
-                            }}
-                            label="Valor em R$"
-                            name="valorNovoGasto"
-                            value={values.valorNovoGasto}
-                            onChange={handleInputChange}
-                            {...(errors.valorNovoGasto ? { error: true, helperText: errors.valorNovoGasto } : null)} />
-
-                        <TextField
-                            id="outlined-adornment-amount"
-                            sx={{
-                                width: 325,
-                                margin: 1
-                            }}
-                            label="Categoria"
-                            name="categoriaNovoGasto"
-                            value={values.categoriaNovoGasto}
-                            onChange={handleInputChange}
-                            {...(errors.categoriaNovoGasto ? { error: true, helperText: errors.categoriaNovoGasto } : null)} />
-
-                        <TextField
-                            id="outlined-adornment-amount"
-                            sx={{
-                                width: 325,
-                                margin: 1
-                            }}
-                            label="Data"
-                            name="dataNovoGasto"
-                            value={values.dataNovoGasto}
-                            onChange={handleInputChange}
-                            {...(errors.dataNovoGasto ? { error: true, helperText: errors.dataNovoGasto } : null)} />
-
-                        <TextField
-                            id="outlined-adornment-amount"
-                            sx={{
-                                width: 325,
-                                margin: 1
-                            }}
-                            label="Meta relacionada"
-                            name="metaNovoGasto"
-                            value={values.metaNovoGasto}
-                            onChange={handleInputChange}
-                            {...(errors.metaNovoGasto ? { error: true, helperText: errors.metaNovoGasto } : null)} />
-
-                        <br></br> <br></br>
-
-                        {posts.map((post, index) => {
-
-                            return (
-                                <Fragment key={index}>
-                                    <Button variant="contained" type="submit" color="primary"
-                                        onClick={() => { setAction({ currentId: post._id, type: ACTION_TYPES.UPDATE }) }}
-                                        sx={{ mt: 3, mb: 2 }} > Continuar</Button>
-                                </Fragment>
-                            );
-                        })}
-
-                    </form>
-                </center>
-            </Stack>
-        </Box >
-    );
-
+    
     let matriz_trasicoes = []
 
     let Data = 0
@@ -461,7 +363,7 @@ function Extrato() {
                                                         open={state[anchor]}
 
                                                         onOpen={toggleDrawer(anchor, true)}>
-                                                        {list2(anchor)}
+                                                        {list(anchor)}
                                                     </SwipeableDrawer>
 
                                                 </React.Fragment>
@@ -514,7 +416,7 @@ function Extrato() {
                                                         open={state[anchor]}
 
                                                         onOpen={toggleDrawer(anchor, true)}>
-                                                        {list2(anchor)}
+                                                        {list(anchor)}
                                                     </SwipeableDrawer>
 
                                                 </React.Fragment>
