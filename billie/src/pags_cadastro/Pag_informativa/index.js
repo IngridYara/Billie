@@ -55,12 +55,15 @@ function Pag_dados() {
           }}>
             Para personalizar <br></br>melhor o seu ambiene, <br></br>
             responda o questionário <br></br> a seguir
-            para que eu <br></br> possa te conhcer <br></br> melhor!
+            para que eu <br></br> possa te conhecer <br></br> melhor!
           </Typography>
 
           <br></br>
-          <Link to="/rendas" style={{"text-decoration":"none"}}><Button variant="contained" type="submit" color="primary"
-            sx={{ mt: 3, mb: 2, "text-decoration": "none" }}>Continuar</Button></Link>
+          <Link to="/rendas" style={{"text-decoration":"none"}}>
+          <Button variant="contained" type="submit" color="primary"
+            sx={{ mt: 3, mb: 2, "text-decoration": "none" }}>Continuar
+            </Button>
+            </Link>
 
         </center>
       </ThemeProvider>

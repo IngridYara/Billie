@@ -91,6 +91,7 @@ const Login = (props) =>{
                   <FormControlLabel control={<Checkbox value="remember" color="secondary" />}
                     label="Me mantenha logado"/>
 
+                    <Link to="/pag_inicial" style={{"text-decoration":"none"}}> 
                     <Button 
                     variant="contained"
                     color="primary"
@@ -98,14 +99,14 @@ const Login = (props) =>{
                     type="submit"
                     sx={{ mt: 3, mb: 2 }}>
                     Entrar   
-                </Button>
+                </Button></Link>
 
                 <Grid container>
                   <Grid item xs>
-                    <Link to="/resgate_senha">Esqueceu sua senha?</Link>
+                    <Link to="/resgate_senha"  style={{"text-decoration":"none"}}>Esqueceu sua senha?</Link>
                   </Grid>
                   <Grid item>
-                    <Link to="/cadastro">Não tem uma conta? Cadastre-se aqui!</Link>
+                    <Link to="/cadastro"  style={{"text-decoration":"none"}}>Não tem uma conta? Cadastre-se aqui!</Link>
                   </Grid>
                 </Grid>
             </form>

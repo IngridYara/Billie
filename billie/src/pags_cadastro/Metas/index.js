@@ -68,7 +68,7 @@ const Metas = (props) => {
                   onChange={handleInputChange}
                   {...(errors.descricao? { error: true, helperText:errors.descricao} : null)}
                                 
-                label="Primeira Meta"  />
+                label="Meta"  />
 
                 <TextField 
                   id="outlined-adornment-amount" 
@@ -85,9 +85,12 @@ const Metas = (props) => {
 
                   return (
                     <Fragment key={index}>
+                   
                       <Button variant="contained" type="submit" color="primary" sx={{ mt: 3, mb: 2 }}
-                        onClick={() => { { setAction({ currentId: post._id, type: ACTION_TYPES.UPDATE }) } }}>Continuar</Button>
-                    </Fragment>
+                        onClick={() => { { setAction({ currentId: post._id, type: ACTION_TYPES.UPDATE }) } }}>Continuar
+                      </Button>
+                   
+                        </Fragment>
     
                   );
                 })}

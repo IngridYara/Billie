@@ -106,7 +106,7 @@ function Gastos() {
         <Typography>
         <Stack direction="row" spacing={4}>
             <Card sx={{ maxWidth: 45, height: 40 }} style={{ borderRadius: 13 }}>
-            <Link to="/pag_inicial">
+            <Link to="/rendas">
                 <IconButton color="primary" aria-label="ArrowBack" fontSize="large" backgroundColor="skyblue">
                 <ArrowBackIcon sx={{ color: "#00C8C0" }} />
                 </IconButton>
@@ -190,8 +190,10 @@ function Gastos() {
             />
   
             <br></br>
+            <Link to="/metas" style={{"text-decoration":"none"}}>
             <Button variant="contained" type="submit" color="primary"
               sx={{ mt: 3, mb: 2 }}> Continuar</Button>
+              </Link>
 
             </FormGroup>
 

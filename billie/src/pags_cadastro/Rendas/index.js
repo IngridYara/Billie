@@ -65,8 +65,11 @@ function rendas() {
             </FormGroup>
 
             <br></br>
-            <Link to="/gastos" style={{"text-decoration":"none"}}><Button variant="contained" type="submit" color="primary"
-              sx={{ mt: 3, mb: 2 }}> Continuar</Button></Link>
+            <Link to="/gastos" style={{"text-decoration":"none"}}>
+            <Button variant="contained" type="submit" color="primary"
+              sx={{ mt: 3, mb: 2 }}> Continuar
+              </Button>
+              </Link>
 
           </Stack>
         </center>

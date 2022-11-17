@@ -1,12 +1,12 @@
 import React from 'react';
-import MyContext from '../../contexts/MyContext'
-import { Fragment, useContext } from 'react';
+
 import {createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {Typography, IconButton, Container, Card, CardContent, Divider, Stack} from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Chart } from "react-google-charts";
+
 
 const theme = createTheme({
 
@@ -25,22 +25,31 @@ const theme = createTheme({
             main: '#FF9800'
         }
     },
+
+    
+    
+       
 });
 
+export const data = [
+  ["Task", "Hours per Day"],
+  ["Carro ", 11],
+  ["Comida", 2],
+  ["Escola", 2],
+  ["Moradia", 2],
+  ["Lazer", 7],
+];
 export const options = {
-
   title: "Gastos totais",
 };
 
 
 export const data2 = [
-
     ['Effort', 'Amount given'],
     ['Total',     100],
 ];
 
 export const options2 = {
-
     pieHole: 0.5,
     pieSliceTextStyle: {
       color: 'black',
@@ -51,38 +60,24 @@ export const options2 = {
 
 const Estastistica = () => {
 
-    const { posts, values, handleSubmit, handleInputChange, errors, validate, setAction, ACTION_TYPES } = useContext(MyContext)
-
-    const data = [
-        ["Task", "Hours per Day"],
-        ["Carro ", 11],
-        ["Comida", 2],
-        ["Escola", 2],
-        ["Moradia", 2],
-        ["Lazer", 7],
-    ];
-
     return (
 
+        
         <Container maxWidth="sm">
             <ThemeProvider theme={theme}>
                 <Container>
                     <br></br>
-                    <Typography>
                     <Stack direction="row" spacing={4}>
                         <Card sx={{ maxWidth: 45, height: 40 }} style={{ borderRadius: 13 }}>
-                        <Link to="/pag_inicial">
-                            <IconButton color="primary" aria-label="ArrowBack" fontSize="large" backgroundColor="skyblue">
-                            <ArrowBackIcon sx={{ color: "#00C8C0" }} />
-                            </IconButton>
-                        </Link>
+                            <Link to="/pag_inicial">
+                                <IconButton color="primary" aria-label="ArrowBack" fontSize="large" backgroundColor="skyblue">
+                                    <ArrowBackIcon sx={{ color: "#00C8C0" }} />
+                                </IconButton>
+                            </Link>
                         </Card>
-                       
-                        <h1>ESTATÍSTICA</h1>
-                        
-                        <br></br><br></br><br></br><br></br>
+
+                        <Typography><h1>ESTATÍSTICAS</h1></Typography>
                     </Stack>
-                    </Typography>
 
                     <Card sx={{ maxWidth: 450, height: 350 }} style={{ borderRadius: 70 }} >
 

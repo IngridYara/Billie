@@ -98,104 +98,6 @@ const Meta = (props) => {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
-
-    <Box role="presentation">
-
-      {posts.map((post, index) => {
-
-
-        return (
-          <Fragment key={index}>
-            <StyledBox
-              sx={{
-                position: 'absolute', top: -260, borderTopLeftRadius: 12, borderTopRightRadius: 12, visibility: 'visible', right: 0,
-                left: 0,
-              }}>
-
-              <Puller />
-
-              <IconButton onClick={toggleDrawer(anchor, false)}>
-                <CloseIcon />
-              </IconButton>
-
-              <br></br>
-              <Stack direction='row' spacing={4} justifyContent="center"
-                alignItems="center">
-
-                <center>
-                  <Typography sx={{ color: "#00C8C0" }}>
-                    <h2>{calculo_porcentagem.cont.toFixed(2)}%</h2>
-                  </Typography>
-                </center>
-
-                <Typography variant="body2" sx={{ color: "#fff" }}>
-                  {['Editar'].map((anchor) => (
-
-                    <React.Fragment key={anchor}>
-
-                      <IconButton onClick={toggleDrawer(anchor, true)} color="primary" aria-label="Create" fontSize="large" backgroundColor="skyblue">
-                        <CreateIcon sx={{ fontSize: 40, left: 69, color: grey[400], }} />
-                      </IconButton>
-
-                      <br></br><br></br>
-
-                      <SwipeableDrawer
-                        anchor="bottom"
-                        open={state[anchor]}
-
-                        onOpen={toggleDrawer(anchor, true)}>
-                        {list6(anchor)}
-                      </SwipeableDrawer>
-                    </React.Fragment>
-                  ))}
-                </Typography>
-
-              </Stack>
-
-              <center>
-                <h1>{post.meta1}</h1>
-
-                <Box sx={{ flexGrow: 1 }}>
-
-                  <BorderLinearProgress variant="determinate" value={calculo_porcentagem.cont} />
-                </Box>
-
-                <Typography sx={{ color: "#00C8C0" }}>
-                  <h2>Suas Conquistas</h2>
-                </Typography>
-
-                <Box sx={{
-                  display: 'flex', alignItems: 'center', width: 'fit-content', border: (theme) => `1px solid ${theme.palette.divider}`,
-                  borderRadius: 1, bgcolor: 'background.paper', color: 'text.secondary',
-                  '& svg': {
-                    m: 2,
-                  },
-                  '& hr': {
-                    mx: 2.5,
-                  },
-                }}>
-                  <IconButton color="primary" aria-label="Verified" fontSize="large" backgroundColor="skyblue">
-                    <VerifiedIcon sx={{ fontSize: 50, left: 69, color: "#FF9800", }} />
-                  </IconButton>
-                  <Divider orientation="vertical" flexItem />
-                  <Stack direction={{ xs: 'column' }} spacing={{ xs: 35, sm: 4, md: 1 }}>
-
-                    <Typography><h3>{post.nomeNovoGasto}</h3>
-
-                      <h6>R$ {post.valor1}  {post.dataNovoGasto} </h6></Typography>
-
-                  </Stack>
-                </Box>
-              </center>
-            </StyledBox>
-          </Fragment>
-        );
-
-      })}
-    </Box >
-  );
-
   const list4 = (anchor) => (
 
     <Box role="presentation">
@@ -294,19 +196,19 @@ const Meta = (props) => {
                 id="outlined-name"
                 label="Nova Meta"
                 sx={{ width: 350 }}
-                name="metaNova"
-                value={values.metaNova}
+                name="descricao"
+                value={values.descricao}
                 onChange={handleInputChange}
-                {...(errors.metaNova ? { error: true, helperText: errors.metaNova } : null)} />
+                {...(errors.descricao ? { error: true, helperText: errors.descricao } : null)} />
 
               <TextField
                 id="outlined-adornment-amount"
                 sx={{ width: 350 }}
                 label="Valor em R$"
-                name="valorNovo"
-                value={values.valorNovo}
+                name="valor_alvo"
+                value={values.valor_alvo}
                 onChange={handleInputChange}
-                {...(errors.valorNovo ? { error: true, helperText: errors.valorNovo } : null)} />
+                {...(errors.valor_alvo ? { error: true, helperText: errors.valor_alvo } : null)} />
 
               <br></br> <br></br>
 
@@ -360,19 +262,19 @@ const Meta = (props) => {
                 id="outlined-name"
                 label="Alterar Meta"
                 sx={{ width: 350 }}
-                name="meta1"
-                value={values.meta1}
+                name="descricao"
+                value={values.descricao}
                 onChange={handleInputChange}
-                {...(errors.meta1 ? { error: true, helperText: errors.meta1 } : null)} />
+                {...(errors.descricao ? { error: true, helperText: errors.descricao } : null)} />
 
               <TextField
                 id="outlined-adornment-amount"
                 sx={{ width: 350 }}
                 label="Alterar Valor em R$"
-                name="valor1"
-                value={values.valor1}
+                name="valor_alvo"
+                value={values.valor_alvo}
                 onChange={handleInputChange}
-                {...(errors.valor1 ? { error: true, helperText: errors.valor1 } : null)} />
+                {...(errors.valor_alvo ? { error: true, helperText: errors.valor_alvo } : null)} />
 
               <br></br> <br></br>
 
